@@ -1,37 +1,38 @@
 // importing relevant files
 const express = require("express");
 const swaggerJSDoc = require("swagger-jsdoc");
-const swaggerUI = require("swagger-ui-express")
+const swaggerUI = require("swagger-ui-express");
+const router = require("./apis/getCallback/callback.router.js");
 
 // initializing an express application
 const app = express();
 
 // setting up swagger
-const SwaggerOptions = {
-    SwaggerDefinition:{
-        info: {
-            title: "Musren Callback API",
-            version: "1.0.0",
-        },
+const swaggerOptions = {
+  swaggerDefinition: {
+    openapi: "3.0.0",
+    info: {
+      title: "Musren APIs",
+      version: "1.0.0",
+      description: "API To receive and handle DLR callbacks",
     },
-    // include the route file for swagger
-    apis:["app.js","./controller/*.js"]
-}
+    servers: [
+      { url: "http://localhost:3000", description: "Development server" },
+    ],
+  },
+  // include the route file for swagger
+  apis: ["./apis/getCallback/callback.controller.js"], // Ensure the path is correct
+};
 
-const swaggerDocs =swaggerJSDoc(SwaggerOptions);
-console.log(swaggerDocs);
-app.use(cors());
-app.use(express.json())
-app.use("/api-docs", swaggerUI.serve), swaggerUI.setup(swaggerDocs);
+const swaggerDocs = swaggerJSDoc(swaggerOptions);
 
+app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
-// getting routes
-const getCallbacks = require("./apis/getCallback/callback.controller");
-const getStatusInfo = require("./apis/getStatuses/status.controller.js")
+// Use router
+app.use("/api", router);
 
-//use routes
-app.use("/callbacks", getCallbacks);
-app.use("/status",getStatusInfo);
-
-//listen on localhost 5000
-app.listen(5000, () => console.log("listening to 5000"))
+const PORT = process.env.PORT || 3000;
+// listen on localhost port
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
