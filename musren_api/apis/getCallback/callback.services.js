@@ -10,7 +10,7 @@ const insertDLRCallback = (data, callback) => {
   const {
     doneDate,
     submitDate,
-    errorCode,
+    errorCode = null,
     shortMessage,
     status,
     messageID,

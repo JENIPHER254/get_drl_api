@@ -18,7 +18,7 @@ const swaggerOptions = {
       { url: "http://localhost:3000", description: "Development server" },
     ],
   },
-  apis: ["./apis/getCallback/callback.controller.js", "./apis/getStatuses/status.controller.js"],
+  apis: ["./apis/*/*.js",],
 };
 
 const swaggerDocs = swaggerJSDoc(swaggerOptions);
