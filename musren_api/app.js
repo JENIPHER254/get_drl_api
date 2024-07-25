@@ -26,8 +26,8 @@ app.use("/api-docs", swaggerUI.serve), swaggerUI.setup(swaggerDocs);
 
 
 // getting routes
-const getCallbacks = require("./apis/getCallbacks");
-const getStatusInfo = require("./apis/getStatusInfo")
+const getCallbacks = require("./apis/getCallback/callback.controller");
+const getStatusInfo = require("./apis/getStatuses/status.controller.js")
 
 //use routes
 app.use("/callbacks", getCallbacks);
