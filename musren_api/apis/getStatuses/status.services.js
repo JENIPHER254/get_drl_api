@@ -9,7 +9,7 @@ const pool = require("./../../config/database");
  */
 const getStatusData = (data, callback) => {
   // Construct the SQL query based on the provided data.
-  const query = "SELECT * FROM dlr_callbacks WHERE done_date = ? AND submit_date = ?";
+  const query = "SELECT * FROM dlr_callbacks";
   const queryParams = [data.doneDate, data.submitDate]; // Add more parameters as needed
 
   pool.query(query, queryParams, (error, results) => {

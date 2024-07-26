@@ -2,7 +2,7 @@ const { getStatusData } = require("./status.services");
 
 /**
  * @swagger
- * /status:
+ * /api/status:
  *   get:
  *     description: Get status data from Onphone Provider
  *     responses:
