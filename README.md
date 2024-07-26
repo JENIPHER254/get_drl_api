@@ -8,6 +8,10 @@ Musren API for recieving callbacks
 - "swagger-jsdoc": "^6.2.8",
 - "swagger-ui-express": "^5.0.1"
 
+## API desctiption
+
+- /api/dlr api gets data from drl
+- api/dlr api gets data from Musren db
 
 ## PROJECT UI
 
